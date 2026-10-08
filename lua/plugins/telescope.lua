@@ -3,12 +3,17 @@ return {
     dependencies = {
         'nvim-lua/plenary.nvim',
         -- optional but recommended
-        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+        {
+		'nvim-telescope/telescope-fzf-native.nvim', 
+		build = 'make',
+		cond = function () return vim.fn.executable('make') == 1 end
+	},
+
     },
     cmd = "Telescope",
     keys = {
 	{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
-	{ "<leader>fg", "<cmd>Telescope live grep<cr>", desc = "Live grep" }
+	{ "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Live grep" }
     },
     
     config = function()
